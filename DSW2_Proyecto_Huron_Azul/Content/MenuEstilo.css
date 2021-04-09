@@ -1,0 +1,11 @@
+﻿.bienvenida {
+    color: #032690;
+    font-weight: bold;
+    padding: 15px;
+    margin: 0;
+}
+
+#logo {
+    width:70px;
+    height: inherit;
+}

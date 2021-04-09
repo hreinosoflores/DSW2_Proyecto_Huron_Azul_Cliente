@@ -1,0 +1,7 @@
+﻿<li><p class="bienvenida">Bienvenido, @ViewBag.NombresUsu</p></li>
+<li>@Html.ActionLink("Editar mis datos personales","Editar","Usuario")</li>
+<li>@Html.ActionLink("Solicitar cita", "Registrar", "Cita")</li>
+<li>@Html.ActionLink("Mis citas", "Listar", "Cita",new { usuario=ViewBag.CodUsu},null)</li>
+<li>@Html.ActionLink("Mis pedidos", "Listar", "Pedido",new { usuario=ViewBag.CodUsu},null)</li>
+<li>@Html.ActionLink("Ver Carrito", "Carrito", "Pedido")</li>
+<li>@Html.ActionLink("Cerrar Sesión","Log_Out","Logueo")</li>

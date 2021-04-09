@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DSW2_Proyecto_Huron_Azul.localhost.BeanCitaTuneado>
+@{
+    ViewBag.Title = "Citas Solicitadas";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NRO_CITA)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SEDE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FECHA)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HORA)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LUGAR_ATENCION)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NRO_CITA)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.SEDE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HORA)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.LUGAR_ATENCION)
+            </td>
+            <td>
+                @Html.ActionLink("Ver Detalles", "Detalle", new { nrocita = item.NRO_CITA }) |
+                @Html.ActionLink("Cancelar Cita", "Cancelar", new { nrocita = item.NRO_CITA })
+            </td>
+        </tr>
+    }
+
+</table>
+

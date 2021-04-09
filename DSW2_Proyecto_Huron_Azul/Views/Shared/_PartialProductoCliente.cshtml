@@ -1,0 +1,23 @@
+﻿@model IEnumerable<DSW2_Proyecto_Huron_Azul.localhost.BeanProducto>
+<div class="cuerpo">
+    @foreach (var reg in Model)
+    {
+    <div class="registro">
+
+        <img class="imagen" src="@Url.Content(string.Format("~/imagenes/productos/{0}",reg.FOTOPROD.ToLower()))" alt="Imagen no disponible"/>
+        <p>@reg.DESCPROD</p>
+        <p>S/.@decimal.Parse(reg.PREPROD).ToString("F") </p>
+        @using (Html.BeginForm("Add_producto", "Pedido", FormMethod.Post))
+        {
+            <input type="hidden" name="codprod" value=@reg.CODPROD />
+            <input type="number" name="cantidad" placeholder="Ingrese cantidad" min="1" oninput="this.value = Math.abs(this.value)"/>
+            <input type="submit" value="Añadir Al Carrito" />
+        }
+
+
+    </div>
+    }
+
+
+
+</div>

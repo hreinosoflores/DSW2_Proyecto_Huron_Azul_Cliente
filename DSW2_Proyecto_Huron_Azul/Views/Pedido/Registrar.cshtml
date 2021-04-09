@@ -1,0 +1,72 @@
+﻿@model DSW2_Proyecto_Huron_Azul.localhost.BeanPedido
+
+@{
+    ViewBag.Title = "Completando orden de pedido";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <p>Fecha y Hora de Orden: @Html.DisplayFor(model => model.FECPEDIDO)</p>
+    <p>Monto del pedido: S/.@decimal.Parse(Model.MONTO).ToString("F")</p>
+
+    @Html.HiddenFor(model => model.CLIENTE)
+    @Html.HiddenFor(model => model.FECPEDIDO)
+    @Html.HiddenFor(model => model.MONTO)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.SEDE, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.SEDE, (SelectList)ViewBag.sedes)
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.METODOENVIO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.METODOENVIO, 1, new { @class = "form-check-input", @checked = true })
+                @Html.Label("Domicilio")
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.METODOENVIO, 2, new { @class = "form-check-input" })
+                @Html.Label("Recojo en tienda")
+            </div>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.METODOPAGO, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.METODOPAGO, 1, new { @class = "form-check-input", @checked = true })
+                @Html.Label("Efectivo")
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.METODOPAGO, 2, new { @class = "form-check-input" })
+                @Html.Label("Tarjeta")
+            </div>
+            <div class="form-check">
+                @Html.RadioButtonFor(model => model.METODOPAGO, 3, new { @class = "form-check-input" })
+                @Html.Label("Deposito Bancario")
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="ORDENAR" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<DSW2_Proyecto_Huron_Azul.Models.Carrito>
+
+@{
+    ViewBag.Title = "Mi carrito de compras";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.descripcion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantidad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.monto)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.descripcion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.precio)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.monto)
+            </td>
+            <td>
+                @Html.ActionLink("Eliminar", "Delete_producto", new { codprod = item.codigo })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    Total: S/.@Model.Sum(x => x.monto).ToString("F")
+</p>
+
+
+
+@Html.ActionLink("Ordenar Pedido", "Registrar")
+

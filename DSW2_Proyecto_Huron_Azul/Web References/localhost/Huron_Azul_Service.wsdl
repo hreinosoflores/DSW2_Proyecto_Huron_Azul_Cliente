@@ -1,0 +1,1095 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ax21="http://beans/xsd" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ns="http://service" xmlns:ns1="http://org.apache.axis2/xsd" targetNamespace="http://service" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:documentation>
+		Please Type your service description here
+	</wsdl:documentation>
+  <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://beans/xsd">
+      <xs:complexType name="BeanProducto">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CATPROD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CODPROD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DESCPROD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FOTOPROD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PREPROD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="STKPROD" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanPedidoDetalle">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CANTIDAD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CODPEDIDO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MONTO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PRODUCTO" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanSede">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CODSEDE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DIRSEDE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REFSEDE" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanCategoriaProd">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CODCAT" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DESCCAT" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanCitaTuneado">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CODUSUARIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CORREO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DNI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DOMICILIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ESTADO_ACTUAL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FECHA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HORA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LUGAR_ATENCION" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOM_CLIENTE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NRO_CITA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SEDE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TELEFONO" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanCita">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CLIENTE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CODCITA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ESTADO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FECHA_HORA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="LUGARATENCION" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SEDE" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanPedido">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CLIENTE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CODPEDIDO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FECPEDIDO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="METODOENVIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="METODOPAGO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MONTO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SEDE" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanPedidoTuneado">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CLIENTE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CODPEDIDO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CODUSUARIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CORREO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DNI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DOMICILIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FECHA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="HORA" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="METODOENVIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="METODOPAGO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MONTO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="REFSEDE" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TELEFONO" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="BeanUsuario">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="APEUSUARIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="CODUSUARIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DIRECCION" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DNI" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="EMAIL" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ESTADO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FECNAC" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="IDLOGIN" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="NOMUSUARIO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PASSWORD" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SEXO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TELEFONO" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TIPOUSUARIO" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+    <xs:schema xmlns:ax22="http://beans/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://service">
+      <xs:import namespace="http://beans/xsd" />
+      <xs:element name="listaBeanProducto">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="lista_prod" nillable="true" type="ax22:BeanProducto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listaBeanPedidoDetalle">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="lista_detalle" nillable="true" type="ax22:BeanPedidoDetalle" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_inactivar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="codprod" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_inactivarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="s_listar">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="s_listarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax22:BeanSede" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cat_listar">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="cat_listarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax22:BeanCategoriaProd" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_listar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_listarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax22:BeanCitaTuneado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_registrar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="p" nillable="true" type="ax22:BeanProducto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_registrarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_registrar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="c" nillable="true" type="ax22:BeanCita" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_registrarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_cancelar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="nrocita" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_cancelarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ped_registrar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="p" nillable="true" type="ax22:BeanPedido" />
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="lista_detalle" nillable="true" type="ax22:BeanPedidoDetalle" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ped_registrarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ped_detalle">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="codpedido" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ped_detalleResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:BeanPedidoTuneado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_editar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="p" nillable="true" type="ax22:BeanProducto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_editarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="u_registrar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="u" nillable="true" type="ax22:BeanUsuario" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="u_registrarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="u_logueo">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="pass" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="u_logueoResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:BeanUsuario" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="listaBeanPedido">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="lista_pedido" nillable="true" type="ax22:BeanPedido" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_autogenera">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_autogeneraResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_detalle">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="nrocita" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ci_detalleResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="ax22:BeanCitaTuneado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="u_editar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="u" nillable="true" type="ax22:BeanUsuario" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="u_editarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ped_listar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="ped_listarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax22:BeanPedidoTuneado" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_listar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="TIPO_USUARIO" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="P_CATPROD" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="P_DESCPROD" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="pro_listarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" maxOccurs="unbounded" name="return" nillable="true" type="ax22:BeanProducto" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="u_editarRequest">
+    <wsdl:part name="parameters" element="ns:u_editar" />
+  </wsdl:message>
+  <wsdl:message name="u_editarResponse">
+    <wsdl:part name="parameters" element="ns:u_editarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ci_listarRequest">
+    <wsdl:part name="parameters" element="ns:ci_listar" />
+  </wsdl:message>
+  <wsdl:message name="ci_listarResponse">
+    <wsdl:part name="parameters" element="ns:ci_listarResponse" />
+  </wsdl:message>
+  <wsdl:message name="listaBeanPedidoRequest">
+    <wsdl:part name="parameters" element="ns:listaBeanPedido" />
+  </wsdl:message>
+  <wsdl:message name="pro_autogeneraRequest">
+    <wsdl:part name="parameters" element="ns:pro_autogenera" />
+  </wsdl:message>
+  <wsdl:message name="pro_autogeneraResponse">
+    <wsdl:part name="parameters" element="ns:pro_autogeneraResponse" />
+  </wsdl:message>
+  <wsdl:message name="ped_detalleRequest">
+    <wsdl:part name="parameters" element="ns:ped_detalle" />
+  </wsdl:message>
+  <wsdl:message name="ped_detalleResponse">
+    <wsdl:part name="parameters" element="ns:ped_detalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="cat_listarRequest">
+    <wsdl:part name="parameters" element="ns:cat_listar" />
+  </wsdl:message>
+  <wsdl:message name="cat_listarResponse">
+    <wsdl:part name="parameters" element="ns:cat_listarResponse" />
+  </wsdl:message>
+  <wsdl:message name="listaBeanProductoRequest">
+    <wsdl:part name="parameters" element="ns:listaBeanProducto" />
+  </wsdl:message>
+  <wsdl:message name="ped_listarRequest">
+    <wsdl:part name="parameters" element="ns:ped_listar" />
+  </wsdl:message>
+  <wsdl:message name="ped_listarResponse">
+    <wsdl:part name="parameters" element="ns:ped_listarResponse" />
+  </wsdl:message>
+  <wsdl:message name="u_registrarRequest">
+    <wsdl:part name="parameters" element="ns:u_registrar" />
+  </wsdl:message>
+  <wsdl:message name="u_registrarResponse">
+    <wsdl:part name="parameters" element="ns:u_registrarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ped_registrarRequest">
+    <wsdl:part name="parameters" element="ns:ped_registrar" />
+  </wsdl:message>
+  <wsdl:message name="ped_registrarResponse">
+    <wsdl:part name="parameters" element="ns:ped_registrarResponse" />
+  </wsdl:message>
+  <wsdl:message name="pro_editarRequest">
+    <wsdl:part name="parameters" element="ns:pro_editar" />
+  </wsdl:message>
+  <wsdl:message name="pro_editarResponse">
+    <wsdl:part name="parameters" element="ns:pro_editarResponse" />
+  </wsdl:message>
+  <wsdl:message name="u_logueoRequest">
+    <wsdl:part name="parameters" element="ns:u_logueo" />
+  </wsdl:message>
+  <wsdl:message name="u_logueoResponse">
+    <wsdl:part name="parameters" element="ns:u_logueoResponse" />
+  </wsdl:message>
+  <wsdl:message name="listaBeanPedidoDetalleRequest">
+    <wsdl:part name="parameters" element="ns:listaBeanPedidoDetalle" />
+  </wsdl:message>
+  <wsdl:message name="pro_inactivarRequest">
+    <wsdl:part name="parameters" element="ns:pro_inactivar" />
+  </wsdl:message>
+  <wsdl:message name="pro_inactivarResponse">
+    <wsdl:part name="parameters" element="ns:pro_inactivarResponse" />
+  </wsdl:message>
+  <wsdl:message name="pro_listarRequest">
+    <wsdl:part name="parameters" element="ns:pro_listar" />
+  </wsdl:message>
+  <wsdl:message name="pro_listarResponse">
+    <wsdl:part name="parameters" element="ns:pro_listarResponse" />
+  </wsdl:message>
+  <wsdl:message name="pro_registrarRequest">
+    <wsdl:part name="parameters" element="ns:pro_registrar" />
+  </wsdl:message>
+  <wsdl:message name="pro_registrarResponse">
+    <wsdl:part name="parameters" element="ns:pro_registrarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ci_cancelarRequest">
+    <wsdl:part name="parameters" element="ns:ci_cancelar" />
+  </wsdl:message>
+  <wsdl:message name="ci_cancelarResponse">
+    <wsdl:part name="parameters" element="ns:ci_cancelarResponse" />
+  </wsdl:message>
+  <wsdl:message name="s_listarRequest">
+    <wsdl:part name="parameters" element="ns:s_listar" />
+  </wsdl:message>
+  <wsdl:message name="s_listarResponse">
+    <wsdl:part name="parameters" element="ns:s_listarResponse" />
+  </wsdl:message>
+  <wsdl:message name="ci_detalleRequest">
+    <wsdl:part name="parameters" element="ns:ci_detalle" />
+  </wsdl:message>
+  <wsdl:message name="ci_detalleResponse">
+    <wsdl:part name="parameters" element="ns:ci_detalleResponse" />
+  </wsdl:message>
+  <wsdl:message name="ci_registrarRequest">
+    <wsdl:part name="parameters" element="ns:ci_registrar" />
+  </wsdl:message>
+  <wsdl:message name="ci_registrarResponse">
+    <wsdl:part name="parameters" element="ns:ci_registrarResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Huron_Azul_ServicePortType">
+    <wsdl:operation name="u_editar">
+      <wsdl:input wsaw:Action="urn:u_editar" message="ns:u_editarRequest" />
+      <wsdl:output wsaw:Action="urn:u_editarResponse" message="ns:u_editarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ci_listar">
+      <wsdl:input wsaw:Action="urn:ci_listar" message="ns:ci_listarRequest" />
+      <wsdl:output wsaw:Action="urn:ci_listarResponse" message="ns:ci_listarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedido">
+      <wsdl:input wsaw:Action="urn:listaBeanPedido" message="ns:listaBeanPedidoRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="pro_autogenera">
+      <wsdl:input wsaw:Action="urn:pro_autogenera" message="ns:pro_autogeneraRequest" />
+      <wsdl:output wsaw:Action="urn:pro_autogeneraResponse" message="ns:pro_autogeneraResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ped_detalle">
+      <wsdl:input wsaw:Action="urn:ped_detalle" message="ns:ped_detalleRequest" />
+      <wsdl:output wsaw:Action="urn:ped_detalleResponse" message="ns:ped_detalleResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="cat_listar">
+      <wsdl:input wsaw:Action="urn:cat_listar" message="ns:cat_listarRequest" />
+      <wsdl:output wsaw:Action="urn:cat_listarResponse" message="ns:cat_listarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanProducto">
+      <wsdl:input wsaw:Action="urn:listaBeanProducto" message="ns:listaBeanProductoRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="ped_listar">
+      <wsdl:input wsaw:Action="urn:ped_listar" message="ns:ped_listarRequest" />
+      <wsdl:output wsaw:Action="urn:ped_listarResponse" message="ns:ped_listarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="u_registrar">
+      <wsdl:input wsaw:Action="urn:u_registrar" message="ns:u_registrarRequest" />
+      <wsdl:output wsaw:Action="urn:u_registrarResponse" message="ns:u_registrarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ped_registrar">
+      <wsdl:input wsaw:Action="urn:ped_registrar" message="ns:ped_registrarRequest" />
+      <wsdl:output wsaw:Action="urn:ped_registrarResponse" message="ns:ped_registrarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="pro_editar">
+      <wsdl:input wsaw:Action="urn:pro_editar" message="ns:pro_editarRequest" />
+      <wsdl:output wsaw:Action="urn:pro_editarResponse" message="ns:pro_editarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="u_logueo">
+      <wsdl:input wsaw:Action="urn:u_logueo" message="ns:u_logueoRequest" />
+      <wsdl:output wsaw:Action="urn:u_logueoResponse" message="ns:u_logueoResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedidoDetalle">
+      <wsdl:input wsaw:Action="urn:listaBeanPedidoDetalle" message="ns:listaBeanPedidoDetalleRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="pro_inactivar">
+      <wsdl:input wsaw:Action="urn:pro_inactivar" message="ns:pro_inactivarRequest" />
+      <wsdl:output wsaw:Action="urn:pro_inactivarResponse" message="ns:pro_inactivarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="pro_listar">
+      <wsdl:input wsaw:Action="urn:pro_listar" message="ns:pro_listarRequest" />
+      <wsdl:output wsaw:Action="urn:pro_listarResponse" message="ns:pro_listarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="pro_registrar">
+      <wsdl:input wsaw:Action="urn:pro_registrar" message="ns:pro_registrarRequest" />
+      <wsdl:output wsaw:Action="urn:pro_registrarResponse" message="ns:pro_registrarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ci_cancelar">
+      <wsdl:input wsaw:Action="urn:ci_cancelar" message="ns:ci_cancelarRequest" />
+      <wsdl:output wsaw:Action="urn:ci_cancelarResponse" message="ns:ci_cancelarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="s_listar">
+      <wsdl:input wsaw:Action="urn:s_listar" message="ns:s_listarRequest" />
+      <wsdl:output wsaw:Action="urn:s_listarResponse" message="ns:s_listarResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ci_detalle">
+      <wsdl:input wsaw:Action="urn:ci_detalle" message="ns:ci_detalleRequest" />
+      <wsdl:output wsaw:Action="urn:ci_detalleResponse" message="ns:ci_detalleResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="ci_registrar">
+      <wsdl:input wsaw:Action="urn:ci_registrar" message="ns:ci_registrarRequest" />
+      <wsdl:output wsaw:Action="urn:ci_registrarResponse" message="ns:ci_registrarResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="Huron_Azul_ServiceSoap11Binding" type="ns:Huron_Azul_ServicePortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="u_editar">
+      <soap:operation soapAction="urn:u_editar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedido">
+      <soap:operation soapAction="urn:listaBeanPedido" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ci_listar">
+      <soap:operation soapAction="urn:ci_listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_autogenera">
+      <soap:operation soapAction="urn:pro_autogenera" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ped_detalle">
+      <soap:operation soapAction="urn:ped_detalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cat_listar">
+      <soap:operation soapAction="urn:cat_listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanProducto">
+      <soap:operation soapAction="urn:listaBeanProducto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ped_listar">
+      <soap:operation soapAction="urn:ped_listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="u_registrar">
+      <soap:operation soapAction="urn:u_registrar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ped_registrar">
+      <soap:operation soapAction="urn:ped_registrar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_editar">
+      <soap:operation soapAction="urn:pro_editar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="u_logueo">
+      <soap:operation soapAction="urn:u_logueo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedidoDetalle">
+      <soap:operation soapAction="urn:listaBeanPedidoDetalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="pro_inactivar">
+      <soap:operation soapAction="urn:pro_inactivar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_listar">
+      <soap:operation soapAction="urn:pro_listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_registrar">
+      <soap:operation soapAction="urn:pro_registrar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_cancelar">
+      <soap:operation soapAction="urn:ci_cancelar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="s_listar">
+      <soap:operation soapAction="urn:s_listar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_detalle">
+      <soap:operation soapAction="urn:ci_detalle" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_registrar">
+      <soap:operation soapAction="urn:ci_registrar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Huron_Azul_ServiceSoap12Binding" type="ns:Huron_Azul_ServicePortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="u_editar">
+      <soap12:operation soapAction="urn:u_editar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedido">
+      <soap12:operation soapAction="urn:listaBeanPedido" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ci_listar">
+      <soap12:operation soapAction="urn:ci_listar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_autogenera">
+      <soap12:operation soapAction="urn:pro_autogenera" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ped_detalle">
+      <soap12:operation soapAction="urn:ped_detalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cat_listar">
+      <soap12:operation soapAction="urn:cat_listar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanProducto">
+      <soap12:operation soapAction="urn:listaBeanProducto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ped_listar">
+      <soap12:operation soapAction="urn:ped_listar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="u_registrar">
+      <soap12:operation soapAction="urn:u_registrar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ped_registrar">
+      <soap12:operation soapAction="urn:ped_registrar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_editar">
+      <soap12:operation soapAction="urn:pro_editar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="u_logueo">
+      <soap12:operation soapAction="urn:u_logueo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedidoDetalle">
+      <soap12:operation soapAction="urn:listaBeanPedidoDetalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="pro_inactivar">
+      <soap12:operation soapAction="urn:pro_inactivar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_listar">
+      <soap12:operation soapAction="urn:pro_listar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_registrar">
+      <soap12:operation soapAction="urn:pro_registrar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_cancelar">
+      <soap12:operation soapAction="urn:ci_cancelar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="s_listar">
+      <soap12:operation soapAction="urn:s_listar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_detalle">
+      <soap12:operation soapAction="urn:ci_detalle" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_registrar">
+      <soap12:operation soapAction="urn:ci_registrar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="Huron_Azul_ServiceHttpBinding" type="ns:Huron_Azul_ServicePortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="u_editar">
+      <http:operation location="u_editar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedido">
+      <http:operation location="listaBeanPedido" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ci_listar">
+      <http:operation location="ci_listar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_autogenera">
+      <http:operation location="pro_autogenera" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ped_detalle">
+      <http:operation location="ped_detalle" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="cat_listar">
+      <http:operation location="cat_listar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanProducto">
+      <http:operation location="listaBeanProducto" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="ped_listar">
+      <http:operation location="ped_listar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="u_registrar">
+      <http:operation location="u_registrar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ped_registrar">
+      <http:operation location="ped_registrar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_editar">
+      <http:operation location="pro_editar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="u_logueo">
+      <http:operation location="u_logueo" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listaBeanPedidoDetalle">
+      <http:operation location="listaBeanPedidoDetalle" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="pro_inactivar">
+      <http:operation location="pro_inactivar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_listar">
+      <http:operation location="pro_listar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="pro_registrar">
+      <http:operation location="pro_registrar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_cancelar">
+      <http:operation location="ci_cancelar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="s_listar">
+      <http:operation location="s_listar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_detalle">
+      <http:operation location="ci_detalle" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ci_registrar">
+      <http:operation location="ci_registrar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Huron_Azul_Service">
+    <wsdl:port name="Huron_Azul_ServiceHttpSoap11Endpoint" binding="ns:Huron_Azul_ServiceSoap11Binding">
+      <soap:address location="http://localhost:8080/DSW2_Proyecto_Huron_Azul_Servicio/services/Huron_Azul_Service.Huron_Azul_ServiceHttpSoap11Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="Huron_Azul_ServiceHttpSoap12Endpoint" binding="ns:Huron_Azul_ServiceSoap12Binding">
+      <soap12:address location="http://localhost:8080/DSW2_Proyecto_Huron_Azul_Servicio/services/Huron_Azul_Service.Huron_Azul_ServiceHttpSoap12Endpoint/" />
+    </wsdl:port>
+    <wsdl:port name="Huron_Azul_ServiceHttpEndpoint" binding="ns:Huron_Azul_ServiceHttpBinding">
+      <http:address location="http://localhost:8080/DSW2_Proyecto_Huron_Azul_Servicio/services/Huron_Azul_Service.Huron_Azul_ServiceHttpEndpoint/" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

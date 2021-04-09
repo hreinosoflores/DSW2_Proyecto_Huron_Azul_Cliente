@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DSW2_Proyecto_Huron_Azul.localhost.BeanProducto>
+
+@{
+    DSW2_Proyecto_Huron_Azul.localhost.BeanUsuario u_sesion = (DSW2_Proyecto_Huron_Azul.localhost.BeanUsuario)Session["Usuario"];
+    if (u_sesion==null)
+    {
+        ViewBag.TipoUsu = "0";
+    }
+    else
+    {
+        ViewBag.TipoUsu = u_sesion.TIPOUSUARIO;
+    }
+}
+
+@switch (ViewBag.TipoUsu)
+{
+    case "1":
+
+        @Html.Partial("_PartialProductoAdmin")
+        break;
+
+    default:
+        @Html.Partial("_PartialProductoCliente")
+        break;
+
+
+}

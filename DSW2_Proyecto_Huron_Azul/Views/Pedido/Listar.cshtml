@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DSW2_Proyecto_Huron_Azul.localhost.BeanPedidoTuneado>
+    @{
+        ViewBag.Title = "Pedidos solicitados";
+    }
+
+    <h2>@ViewBag.Title</h2>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CODPEDIDO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FECHA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HORA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.REFSEDE)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.METODOENVIO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.METODOPAGO)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MONTO)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CODPEDIDO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FECHA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HORA)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.REFSEDE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.METODOENVIO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.METODOPAGO)
+            </td>
+            <td>
+               S/.@decimal.Parse(item.MONTO).ToString("F")
+            </td>
+            <td>
+         
+                @Html.ActionLink("Ver Detalles", "Detalle", new {  nropedido=item.CODPEDIDO }) 
+            </td>
+        </tr>
+    }
+
+    </table>
