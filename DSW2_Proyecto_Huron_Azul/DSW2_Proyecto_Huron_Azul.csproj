@@ -169,6 +169,7 @@
     <Content Include="imagenes\productos\prod5.jpeg" />
     <Content Include="imagenes\productos\prod6.jpeg" />
     <Content Include="imagenes\productos\prod7.jpeg" />
+    <Content Include="imagenes\productos\prod8.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\bootstrap-theme.css.map" />

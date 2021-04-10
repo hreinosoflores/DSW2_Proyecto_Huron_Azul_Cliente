@@ -32,7 +32,7 @@
         <div class="col-md-10">
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.METODOENVIO, 1, new { @class = "form-check-input", @checked = true })
-                @Html.Label("Domicilio")
+                @Html.Label("A Domicilio")
             </div>
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.METODOENVIO, 2, new { @class = "form-check-input" })
@@ -47,15 +47,15 @@
         <div class="col-md-10">
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.METODOPAGO, 1, new { @class = "form-check-input", @checked = true })
-                @Html.Label("Efectivo")
+                @Html.Label("En Efectivo")
             </div>
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.METODOPAGO, 2, new { @class = "form-check-input" })
-                @Html.Label("Tarjeta")
+                @Html.Label("Tarjeta de Crédito")
             </div>
             <div class="form-check">
                 @Html.RadioButtonFor(model => model.METODOPAGO, 3, new { @class = "form-check-input" })
-                @Html.Label("Deposito Bancario")
+                @Html.Label("Depósito Bancario")
             </div>
         </div>
     </div>
